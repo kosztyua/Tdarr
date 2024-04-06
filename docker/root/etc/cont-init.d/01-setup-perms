@@ -12,7 +12,8 @@ User gid:    $(id -g Tdarr)
 chown -R ${PUID}:${PGID} \
     "${HOME}" \
     /temp \
-    /logs
+    /logs \
+    /app
 
 
 if [ ! -f /firstRun ]; then
