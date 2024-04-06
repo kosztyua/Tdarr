@@ -50,33 +50,33 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image (Final - Node)
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node:${{ github.sha }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node:latest
-          labels: ${{ steps.meta.outputs.labels }},module=Tdarr_Node
-          build-args: |
-            MODULE=Tdarr_Node
-            DATE=${{ steps.build_date.outputs.date }}
-            BASE_TAG=${{ github.sha }}
-          platforms: linux/amd64
-          file: docker/Dockerfile.final
+ #      - name: Build and push Docker image (Final - Node)
+ #       uses: docker/build-push-action@v5
+ #       with:
+ #         context: .
+ #         push: ${{ github.event_name != 'pull_request' }}
+ #         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node:${{ github.sha }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/node:latest
+ #         labels: ${{ steps.meta.outputs.labels }},module=Tdarr_Node
+ #         build-args: |
+ #           MODULE=Tdarr_Node
+ #           DATE=${{ steps.build_date.outputs.date }}
+ #           BASE_TAG=${{ github.sha }}
+ #         platforms: linux/amd64
+ #         file: docker/Dockerfile.final
 
-      - name: Build and push Docker image (Final - Server)
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/server:${{ github.sha }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/server:latest
-          labels: ${{ steps.meta.outputs.labels }},module=Tdarr_Server
-          build-args: |
-            MODULE=Tdarr_Server
-            DATE=${{ steps.build_date.outputs.date }}
-            BASE_TAG=${{ github.sha }}
-          platforms: linux/amd64
-          file: docker/Dockerfile.final         
+#      - name: Build and push Docker image (Final - Server)
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: .
+#          push: ${{ github.event_name != 'pull_request' }}
+#          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/server:${{ github.sha }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/server:latest
+#          labels: ${{ steps.meta.outputs.labels }},module=Tdarr_Server
+#          build-args: |
+#            MODULE=Tdarr_Server
+#            DATE=${{ steps.build_date.outputs.date }}
+#            BASE_TAG=${{ github.sha }}
+#          platforms: linux/amd64
+#          file: docker/Dockerfile.final         
 
       - name: Build and push Docker image (Final - Full)
         uses: docker/build-push-action@v5
