@@ -1,12 +1,12 @@
 name: build_multi
 
 on:
-  pull_request:
-   types: [closed]
+  #pull_request:
+  # types: [closed]
   push:
     branches: ["master"]
-  pull_request:
-    branches: ["**"]
+  #pull_request:
+  #  branches: ["**"]
 
 jobs:
   build_multi_node:
