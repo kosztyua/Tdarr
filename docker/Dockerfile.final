@@ -44,7 +44,7 @@ RUN if [ -z "$VERSION" ]; then \
 # Remove unnecessary files, setup permissions, and cleanup
 RUN apt-get purge -y --auto-remove curl jq unzip && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    chmod -R 755 /app/$MODULE
+    chmod -R 755 /app
 
 # Expose necessary ports
 EXPOSE $NODE_PORT $WEB_UI_PORT $SERVER_PORT
