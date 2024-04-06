@@ -1,10 +1,10 @@
 name: build_multi
 
 on:
-  # pull_request:
-  #  types: [closed]
-  # push:
-  #   branches: ["master"]
+  pull_request:
+   types: [closed]
+  push:
+    branches: ["master"]
   pull_request:
     branches: ["**"]
 
