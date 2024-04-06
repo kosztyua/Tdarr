@@ -7,7 +7,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build_multi_node:
+  build_final:
     runs-on: ubuntu-20.04
     name: build_multi_node
     steps:
@@ -77,3 +77,17 @@ jobs:
             BASE_TAG=${{ github.sha }}
           platforms: linux/amd64
           file: docker/Dockerfile.final         
+
+      - name: Build and push Docker image (Final - Full)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/full:${{ github.sha }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/full:latest
+          labels: ${{ steps.meta.outputs.labels }},module=Tdarr_Full
+          build-args: |
+            MODULE=Tdarr_Full
+            DATE=${{ steps.build_date.outputs.date }}
+            BASE_TAG=${{ github.sha }}
+          platforms: linux/amd64
+          file: docker/Dockerfile.final     

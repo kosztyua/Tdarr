@@ -7,7 +7,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build_multi_node:
+  build_base:
     runs-on: ubuntu-20.04
     name: build_multi_node
     steps:
