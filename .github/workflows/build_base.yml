@@ -1,4 +1,4 @@
-name: build_multi
+name: build_base
 
 on: workflow_dispatch
 
