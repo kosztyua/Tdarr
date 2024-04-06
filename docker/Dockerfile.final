@@ -24,7 +24,7 @@ ARG MODULE
 # If VERSION is not provided, fetch the latest version from versions.json
 # Then, based on the MODULE and VERSION, construct the download URL and proceed to download and unpack
 RUN if [ -z "$VERSION" ]; then \
-        VERSION=$(curl --silent "$VERSIONS_JSON_URL" | jq -r '[keys[]] | map(split(".") | map(tonumber)) | max_by(.[0]) | max_by(.[1]) | max_by(.[2]) | join(".")'); \
+        VERSION=$(curl --silent "https://f000.backblazeb2.com/file/tdarrs/versions.json" | jq -r 'keys | sort_by(split(".") | map(tonumber)) | .[-1]')
     fi && \
     MODULE_URL=$(curl --silent "$VERSIONS_JSON_URL" | jq -r --arg ver "$VERSION" --arg mod "$MODULE" '.[$ver].linux_x64[$mod]') && \
     echo "Downloading $MODULE version $VERSION from $MODULE_URL" && \
