@@ -1,6 +1,6 @@
 # Use the base image with the specified BASE_TAG
 ARG BASE_TAG
-FROM ghcr.io/kosztyua/tdarr/base:${BASE_TAG}
+FROM ghcr.io/kosztyua/tdarr/base:latest
 
 # Environment setup
 ENV WEB_UI_PORT="8265" \
