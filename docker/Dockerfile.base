@@ -24,8 +24,7 @@ RUN mkdir -p \
         /temp \
         "${HOME}" && \
         useradd -u ${PUID} -U -d ${HOME} -s /bin/false Tdarr && \
-        groupadd -g ${PGID} Tdarr && \
-        usermod -G Tdarr Tdarr
+        usermod -G users Tdarr
     
 RUN apt-get update && \
     apt-get install -y \
