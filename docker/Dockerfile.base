@@ -103,7 +103,7 @@ RUN if uname -m | grep -q x86; then \
         # ln -s /usr/lib/jellyfin-ffmpeg/ffmpeg /usr/local/bin/tdarr-ffmpeg ; \
         apt update && \
         apt install -y \
-            ffmpeg ; && \
+            ffmpeg && \
         ln -s /usr/bin/ffmpeg /usr/bin/tdarr-ffmpeg ; \
     fi
 
